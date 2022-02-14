@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,16 @@ namespace WindowsFormsApp1
     internal class Connector
     {
         string connString = "Server=myserver;User ID=admin;Password=mypass;Database=mydatabase";
-        public async List<Customer> getCustomers()
+        public async List<Customer> getCustomer()
         {
-            using (var conn = new MySqlConnection(connString))
+            using (var conn = new MySqlConnector.MySqlConnection(connString)) 
            {
                 await conn.OpenAsync();
 
                 // Retrieve all rows
                 using (var cmd = new MySqlCommand("CALL sp_getCustomers()",conn))
                 using (var reader = await cmd.ExecuteReaderAsync())
-                    while (await reader.Readasync()){
-                        Customer.Add(new )
+                    while (await reader.ReadAsync()){
+                        Customer.Add(new);
     }
-}
+

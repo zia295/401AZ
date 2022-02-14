@@ -5,17 +5,19 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsApp1.models;
 
 namespace WindowsFormsApp1.models
 {
     public class DataManager
     {
-        List<Customer> customers;
-        List<Order1> orders;
-        List<item> items;
-        List<viewOrder> viewOrders;
-        List<ViewOrderItem> viewItems;
+        List<Customer> customers = new List<Customer>() {
+            new Customer() { firstName = "Zia", phoneNumber = "07928225687" },
+            new Customer() { firstName = "Dan", phoneNumber = "07928225647" },
+            new Customer() { firstName = "Pan", phoneNumber = "07928225557" },
+        };
 
+        public static int ZH { get; private set; }
 
         public DataTable toDataTable<T> (List<T> items)
         {
@@ -35,6 +37,11 @@ namespace WindowsFormsApp1.models
                 dataTable.Rows.Add(values);
             }
             return dataTable;
+        }
+
+        internal void toDataTable(object customers)
+        {
+            throw new NotImplementedException();
         }
     }
 }
